@@ -2,10 +2,11 @@
     margin-bottom: 41px;   
 }
 
-@media (max-width:767px) {
+@media (max-width:900px) {
     .header__logo{
         width: 103.74px;
         height: 24.4px;
         margin-bottom: 31.6px; 
+        margin-left: 27px;
     }
 }

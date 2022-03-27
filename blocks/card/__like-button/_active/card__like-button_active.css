@@ -1,7 +1,7 @@
-.card__like-button{
+.card__like-button_active{
     width: 22px;
     height: 19px;
-    background-image: url(../../../images/heart.svg);
+    background-image: url(../../../../images/like-active.svg);
     background-repeat: no-repeat;
     background-color: unset;
     background-position: center;

@@ -8,11 +8,10 @@
     <title>Place</title>
 </head>
 <body class="page">
-    <header class="header">
+   <header class="header">
         <img class="header__logo" src="./images/Vector.svg" alt="Логотип сайта">
     </header>
     <section class="profile">
-        <div class="profile__info">
             <img class="profile__avatar" src="./images/photo_custo.jpg" alt="Аватар профиля">
             <div class="profile__text-info"> 
                 <div class="profile__name">
@@ -27,44 +26,44 @@
     <section class="photo-grid">
         <ul class="cards">
             <li class="card">
-                <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+                <img class="card__image" src="./images/columbia-university-new-york-city.jpg" alt="Колумбийский университет">
                 <div class="card__info">
-                    <h2 class="card__title">Карачаевск</h2>
+                    <h2 class="card__title">Колумбийский университет</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
             <li class="card">
-                <img class="card__image" src="./images/Elbrus.jpg" alt="Эльбруск">
+                <img class="card__image" src="./images/frescos-national-university-mexico.jpg" alt="Фреско национальный университет">
                 <div class="card__info">
-                    <h2 class="card__title">Гора Эльбрус</h2>
+                    <h2 class="card__title">Фреско национальный университет</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
             <li class="card">
-                <img class="card__image" src="./images/Dombai.jpg" alt="Домбай">
+                <img class="card__image" src="./images/handley-library-building-in-winchester.jpg" alt="Хэндли, здание библиотеки">
                 <div class="card__info">
-                    <h2 class="card__title">Домбай</h2>
+                    <h2 class="card__title">Хэндли, здание библиотеки</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
             <li class="card">
-                <img class="card__image" src="./images/Elbrus.jpg" alt="Эльбрус">
+                <img class="card__image" src="./images/national-library-buenos-aires-argentina.jpg" alt="Национальная библиотека Буэнос-Айреса">
                 <div class="card__info">
-                    <h2 class="card__title">Эльбрус</h2>
+                    <h2 class="card__title">Национальная библиотека Буэнос-Айреса</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
             <li class="card">
-                <img class="card__image" src="./images/Dombai.jpg" alt="Домбай">
+                <img class="card__image" src="./images/royal-portuguese-cabinet-reading-rio.jpg" alt="Португальская королевская библиотека">
                 <div class="card__info">
-                    <h2 class="card__title">Домбай</h2>
+                    <h2 class="card__title">Португальская королевская библиотека</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
             <li class="card">
-                <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+                <img class="card__image" src="./images/uppsala-university-library.jpg" alt="Упсала, здание библиотеки">
                 <div class="card__info">
-                    <h2 class="card__title">Карачаевск</h2>
+                    <h2 class="card__title">Упсала, здание библиотеки</h2>
                     <button type="button" class="card__like-button"></button>
                 </div>
             </li>
@@ -73,5 +72,19 @@
     <footer>
         <p class="footer">&#169; 2022 Mesto Russia</p>
     </footer>
+    <section class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title"> Редактировать профиль </h2>
+            <form class="popup__form">
+                <input class="popup__input popup__input_type_name" maxlength="40" >
+                <input class="popup__input popup__input_type_description" maxlength="40">
+                <button type="submit" class="popup__saveButton"> Сохранить</button>
+            </form>
+            
+            <button type="button" class="popup__closeButton"></button>
+        </div>
+    </section>
+    
+    <script src="./scripts/script.js"></script>
 </body>
 </html>
