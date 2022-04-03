@@ -4,22 +4,17 @@
     font-style: normal;
     font-weight: 500;
     line-height: 48px;
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
     color: #FFFFFF;
     max-width: 366px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
-
-
 @media (max-width: 767px) {
     .profile__title {
         font-size: 27px;
-        font-style: normal;
-        font-weight: 500;
         line-height: 33px;
-        font-family: 'Inter';
         text-align: center;
     }
   }

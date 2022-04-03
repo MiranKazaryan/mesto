@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/index.css">
-    <title>Place</title>
+    <title>Mesto</title>
 </head>
 <body class="page">
    <header class="header">
@@ -68,19 +68,19 @@
             </li>
         </ul>
     </section>
-    <footer>
-        <p class="footer">&#169; 2022 Mesto Russia</p>
+    <footer class="footer">
+        <p class="footer__icon">&#169; 2022 Mesto Russia</p>
     </footer>
     <section class="popup">
         <div class="popup__container">
             <h2 class="popup__title"> Редактировать профиль </h2>
             <form class="popup__form">
-                <input class="popup__input popup__input_type_name" maxlength="40" >
-                <input class="popup__input popup__input_type_description" maxlength="40">
-                <button type="submit" class="popup__saveButton"> Сохранить</button>
+                <input class="popup__input popup__input_type_name" maxlength="40" name="name" >
+                <input class="popup__input popup__input_type_description" maxlength="40" name="about">
+                <button type="submit" class="popup__save-button"> Сохранить</button>
             </form>
             
-            <button type="button" class="popup__closeButton"></button>
+            <button type="button" class="popup__close-button"></button>
         </div>
     </section>
     
