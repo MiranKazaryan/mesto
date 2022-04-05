@@ -18,6 +18,7 @@
         align-self: center;
         margin: 0px;
         margin-left: 10px;
+        background-size: 7.5px 7.5px;
     }
   }
   .profile__edit-button:hover{
