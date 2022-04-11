@@ -24,48 +24,6 @@
     </section>
     <section class="photo-grid">
         <ul class="cards">
-            <li class="card">
-                <img class="card__image" src="./images/columbia-university-new-york-city.jpg" alt="Колумбийский университет">
-                <div class="card__info">
-                    <h2 class="card__title">Колумбийский университет</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
-            <li class="card">
-                <img class="card__image" src="./images/frescos-national-university-mexico.jpg" alt="Фреско национальный университет">
-                <div class="card__info">
-                    <h2 class="card__title">Фреско национальный университет</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
-            <li class="card">
-                <img class="card__image" src="./images/handley-library-building-in-winchester.jpg" alt="Хэндли, здание библиотеки">
-                <div class="card__info">
-                    <h2 class="card__title">Хэндли, здание библиотеки</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
-            <li class="card">
-                <img class="card__image" src="./images/national-library-buenos-aires-argentina.jpg" alt="Национальная библиотека Буэнос-Айреса">
-                <div class="card__info">
-                    <h2 class="card__title">Национальная библиотека Буэнос-Айреса</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
-            <li class="card">
-                <img class="card__image" src="./images/royal-portuguese-cabinet-reading-rio.jpg" alt="Португальская королевская библиотека">
-                <div class="card__info">
-                    <h2 class="card__title">Португальская королевская библиотека</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
-            <li class="card">
-                <img class="card__image" src="./images/uppsala-university-library.jpg" alt="Упсала, здание библиотеки">
-                <div class="card__info">
-                    <h2 class="card__title">Упсала, здание библиотеки</h2>
-                    <button type="button" class="card__like-button"></button>
-                </div>
-            </li>
         </ul>
     </section>
     <footer class="footer">
@@ -74,16 +32,42 @@
     <section class="popup">
         <div class="popup__container">
             <h2 class="popup__title"> Редактировать профиль </h2>
-            <form class="popup__form" name="profile-editor">
+            <form class="popup__form" name="profile-editor" id="form-edit">
                 <input class="popup__input popup__input_type_name" maxlength="40" name="name" placeholder="Имя">
                 <input class="popup__input popup__input_type_description" maxlength="40" name="about" placeholder="Вид деятельности">
                 <button type="submit" class="popup__save-button"> Сохранить</button>
             </form>
-            
-            <button type="button" class="popup__close-button"></button>
+            <button type="button" class="popup__close-button" id="1"></button>
         </div>
     </section>
-    
+    <section class="popup_add">
+        <div class="popup__container">
+            <h2 class="popup__title"> Новое место </h2>
+            <form class="popup__form" name="profile-editor" id="form-add">
+                <input class="popup__input popup__input_type_name" maxlength="40" name="place" id="place" placeholder="Название">
+                <input class="popup__input popup__input_type_description" maxlength="80" name="link" id="link" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__save-button"> Создать</button>
+            </form>
+            <button type="button" class="popup__close-button" id="2"></button>
+        </div>
+    </section>
+    <section class="popup_view">
+        <div class="popup__area">
+          <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+          <img class="popup__image" alt="" src="">
+          <p class="popup__view-title"></p>
+        </div>
+      </section>
+    <template id="initial-card">
+        <li class="card">
+            <img class="card__image" src="" alt="Изображение">
+            <button class="card__delete-button"></button>
+            <div class="card__info">
+                <h2 class="card__title"> </h2>
+                <button type="button" class="card__like-button" ></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
