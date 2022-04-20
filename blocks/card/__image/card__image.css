@@ -4,3 +4,8 @@
     border-radius: 0px;
     display: block;
 }
+.card__image:hover{
+    opacity: 0.5;
+    transition-duration: 1s;
+    cursor: pointer;
+}
