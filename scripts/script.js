@@ -4,6 +4,7 @@ const editButton = document.querySelector('.profile__edit-button');
 const formEdit = document.getElementById('form-edit');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
+const popups = document.querySelectorAll('popup');
 
 
 const addButton = document.querySelector('.profile__add-button');
@@ -19,8 +20,8 @@ const inputDescription = document.querySelector('.popup__input_type_description'
 const formAdd = document.getElementById('form-add');
 
 
-const inputPlace = document.getElementById('place');
-const inputLink = document.getElementById('link');
+const inputPlace = document.getElementById('input-place');
+const inputLink = document.getElementById('input-link');
 
 
 const initialCards = [
@@ -58,9 +59,16 @@ const popupViewTitle = document.querySelector('.popup__view-title');
 
 function openPopup(popupArg){
     popupArg.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEscape);
+    popupArg.addEventListener('click', popupCloseOverlay);
+    const submitButton = popupArg.querySelector(configuration.submitButtonSelector);
+    submitButton.classList.add(configuration.inactiveButtonClass);
 };
+
 function closePopup(popupArg){
     popupArg.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupEscape);
+    popupArg.removeEventListener('click', popupCloseOverlay);
 };
 
 //функция редактирования
@@ -143,13 +151,30 @@ function addNewCard(evt){
         link: inputLink.value
     }
     renderCards(element);
-    closeActivePopup();
     formAdd.reset();
-}
+    closeActivePopup();
+}  
+//Закрытие попапоd по клику на оверлей 
+function popupCloseOverlay(evt) {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (evt.target.classList.contains('popup')){
+        closePopup(popupOpened);
+    }
+};
+  //Закрытие попапов по клику на Esc
+  const closePopupEscape = (evt) => {
+    if (evt.key === 'Escape') {
+      const popupOpened = document.querySelector('.popup_opened');
+      closePopup(popupOpened);
+    }
+
+  };
+
 
 editButton.addEventListener('click',openProfilePopup);
 formEdit.addEventListener('submit',changeProfileData);
 addButton.addEventListener('click',function(){
+    
     openPopup(popupAdd);
 });
 closeButtons.forEach(function(item){
