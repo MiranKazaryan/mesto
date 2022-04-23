@@ -11,12 +11,10 @@ const showInputError = (formElement,inputElement,errorMessage, {inputErrorClass,
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
-   // errorElement.classList.add(errorClass);
 };
 const hideInputError = (formElement, inputElement, {inputErrorClass,errorClass}) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
-    //errorElement.classList.remove(errorClass);
     errorElement.textContent='';
 };
 function hasInvalidInput(inputList){
@@ -61,3 +59,12 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector,ina
     });
 };
 enableValidation(configuration);
+// функция очищения ошибок
+function clearError(inputErrorClass, errorClass){
+    inputs.forEach((input) =>{
+       input.classList.remove(inputErrorClass,errorClass);
+    });
+    errors.forEach((error) =>{
+        error.textContent = '';
+    });
+}

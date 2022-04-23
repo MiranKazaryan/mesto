@@ -57,15 +57,13 @@ const popupZoomImg = document.querySelector('.popup_view');
 const popupImg = document.querySelector('.popup__image');
 const popupViewTitle = document.querySelector('.popup__view-title');
 
+const inputs = document.querySelectorAll('.popup__input');
+const errors = document.querySelectorAll('.popup__input-error');
+
 function openPopup(popupArg){
     popupArg.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEscape);
     popupArg.addEventListener('click', popupCloseOverlay);
-    if(popupArg === (popupAdd || popupProfile)){
-        const submitButton = popupArg.querySelector(configuration.submitButtonSelector);
-        submitButton.classList.add(configuration.inactiveButtonClass);
-        submitButton.disabled = true;
-    }
 };
 
 function closePopup(popupArg){
@@ -77,8 +75,12 @@ function closePopup(popupArg){
 //функция редактирования
 function openProfilePopup(){
     openPopup(popupProfile);
+    clearError(configuration.inputErrorClass, configuration.errorClass);
     inputName.value=profileName.textContent;
     inputDescription.value=profileDescription.textContent;
+    const submitButton = popupProfile.querySelector(configuration.submitButtonSelector);
+    submitButton.classList.add(configuration.inactiveButtonClass);
+    submitButton.disabled = true;
 };
 
 //функция закрытия
@@ -168,15 +170,19 @@ function popupCloseOverlay(evt) {
       const popupOpened = document.querySelector('.popup_opened');
       closePopup(popupOpened);
     }
-
   };
 
 
 editButton.addEventListener('click',openProfilePopup);
 formEdit.addEventListener('submit',changeProfileData);
 addButton.addEventListener('click',function(){
-    
     openPopup(popupAdd);
+    inputPlace.value = '';
+    inputLink.value = '';
+    clearError(configuration.inputErrorClass, configuration.errorClass);
+    const submitButton = popupAdd.querySelector(configuration.submitButtonSelector);
+    submitButton.classList.add(configuration.inactiveButtonClass);
+    submitButton.disabled = true;
 });
 closeButtons.forEach(function(item){
     item.addEventListener('click', closeActivePopup);
