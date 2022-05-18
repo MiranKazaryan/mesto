@@ -1,3 +1,5 @@
+import { Card } from "./Card.js";
+import { formValidator } from "./FormValidator.js";
 const initialCards = [
     {
         name: 'Колумбийский университет',
@@ -24,6 +26,15 @@ const initialCards = [
         link:  './images/uppsala-university-library.jpg' 
     }
 ];
+
+const configuration = {
+    formSelector: '.popup__form', 
+    inputSelector: '.popup__input', 
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error'
+}
 
 const popupProfile = document.querySelector('.popup_profile');
 const popupAdd= document.querySelector('.popup_add');
@@ -60,6 +71,13 @@ const popupViewTitle = document.querySelector('.popup__view-title');
 const inputs = document.querySelectorAll('.popup__input');
 const errors = document.querySelectorAll('.popup__input-error');
 
+const editProfileValidator = new formValidator(configuration, popupProfile);
+const addCardValidator = new formValidator(configuration, popupAdd);
+
+editProfileValidator.enableValidation();
+addCardValidator.enableValidation();
+
+
 function openPopup(popupArg){
     popupArg.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEscape);
@@ -75,7 +93,8 @@ function closePopup(popupArg){
 //функция редактирования
 function openProfilePopup(){
     openPopup(popupProfile);
-    clearError(configuration.inputErrorClass, configuration.errorClass);
+    editProfileValidator.clearError();
+    //clearError(configuration.inputErrorClass, configuration.errorClass);
     inputName.value=profileName.textContent;
     inputDescription.value=profileDescription.textContent;
     const submitButton = popupProfile.querySelector(configuration.submitButtonSelector);
@@ -102,7 +121,7 @@ function changeProfileData(evt){
 
 
 
-function likeCardSetListener(evt)
+/*function likeCardSetListener(evt)
 {
    evt.querySelector('.card__like-button').addEventListener('click',function(evt){
        evt.target.classList.toggle('card__like-button_active');
@@ -135,8 +154,22 @@ function initiateCard(element){
     return cardsElement;
 }
 
+const openImgPopup = (name,link) => {
+    popupImg.src = link;
+    popupImg.alt = name;
+    popupViewTitle.textContent = name;
+    openPopup(popupZoomImg); 
+}
+*/
+function openImgPopup(name,link){
+    popupImg.src = link;
+    popupImg.alt = name;
+    popupViewTitle.textContent = name;
+    openPopup(popupZoomImg); 
+}
 function renderCards(element){
-    const cardsElement = initiateCard(element);
+    const card = new Card(element,'#initial-card', openImgPopup)
+    const cardsElement = card.initiateCard(element);
     cardList.prepend(cardsElement);
 }
 
@@ -176,13 +209,17 @@ function popupCloseOverlay(evt) {
 editButton.addEventListener('click',openProfilePopup);
 formEdit.addEventListener('submit',changeProfileData);
 addButton.addEventListener('click',function(){
-    openPopup(popupAdd);
+    formAdd.reset();
+    
     inputPlace.value = '';
     inputLink.value = '';
-    clearError(configuration.inputErrorClass, configuration.errorClass);
-    const submitButton = popupAdd.querySelector(configuration.submitButtonSelector);
-    submitButton.classList.add(configuration.inactiveButtonClass);
-    submitButton.disabled = true;
+    addCardValidator.clearError();
+   // clearError(configuration.inputErrorClass, configuration.errorClass);
+    addCardValidator.toggleButtonState();
+    openPopup(popupAdd);
+    //const submitButton = popupAdd.querySelector(configuration.submitButtonSelector);
+    //submitButton.classList.add(configuration.inactiveButtonClass);
+    //submitButton.disabled = true;
 });
 closeButtons.forEach(function(item){
     item.addEventListener('click', closeActivePopup);

@@ -1,4 +1,4 @@
-const configuration = {
+/*const configuration = {
     formSelector: '.popup__form', 
     inputSelector: '.popup__input', 
     submitButtonSelector: '.popup__save-button',
@@ -68,3 +68,4 @@ function clearError(inputErrorClass, errorClass){
         error.textContent = '';
     });
 }
+*/
