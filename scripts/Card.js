@@ -24,12 +24,12 @@ export class Card{
         const cardElement = this._cardTemplate.cloneNode(true);
         return cardElement;
     }
-    initiateCard(element){
+
+    initiateCard(){
         const popupZoomImg = document.querySelector('.popup_view');
         const popupImg = document.querySelector('.popup__image');
         const popupViewTitle = document.querySelector('.popup__view-title');
         this._cardsElement = this._getTemplate();
-        //this._cardTemplate.cloneNode(true);
         this._cardImg = this._cardsElement.querySelector('.card__image');
         this._buttonLike = this._cardsElement.querySelector('.card__like-button');
         this._buttonDelete = this._cardsElement.querySelector('.card__delete-button');

@@ -125,7 +125,7 @@ function openImgPopup(name,link){
 }
 function renderCards(element){
     const card = new Card(element,'#initial-card', openImgPopup)
-    const cardsElement = card.initiateCard(element);
+    const cardsElement = card.initiateCard();
     cardList.prepend(cardsElement);
 }
 
