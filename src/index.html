@@ -9,10 +9,10 @@
 </head>
 <body class="page">
    <header class="header">
-        <img class="header__logo" src="./images/Vector.svg" alt="Логотип сайта">
+        <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип сайта">
     </header>
     <section class="profile">
-            <img class="profile__avatar" src="./images/photo_custo.jpg" alt="Аватар профиля">
+            <img class="profile__avatar" src="<%=require('./images/photo_custo.jpg')%>" alt="Аватар профиля">
             <div class="profile__text-info"> 
                 <div class="profile__name">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -72,6 +72,6 @@
             </div>
         </li>
     </template>
-    <script type="module" src="./scripts/script.js"></script>
+    <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
