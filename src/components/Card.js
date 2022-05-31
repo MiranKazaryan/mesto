@@ -2,7 +2,7 @@ export class Card{
     constructor(element, cardTemplate, handleCardClick){
         this._name = element.name;
         this._link = element.link;
-        this._cardTemplate = document.querySelector(cardTemplate).content;
+        this._cardTemplate = document.querySelector(cardTemplate).content.querySelector('.card');
         this._handleCardClick = handleCardClick;
     }
   
@@ -11,7 +11,8 @@ export class Card{
     };
 
     _handleDeleteCard(){
-        this._buttonDelete.closest('.card').remove(); 
+        this._cardsElement.remove();
+        this._cardElement = null;
     };
  
     _setEventListeners() {
@@ -22,13 +23,13 @@ export class Card{
 
     _getTemplate(){
         const cardElement = this._cardTemplate.cloneNode(true);
+        console.log(cardElement);
         return cardElement;
     }
 
     initiateCard(){
         const popupZoomImg = document.querySelector('.popup_view');
         const popupImg = document.querySelector('.popup__image');
-        const popupViewTitle = document.querySelector('.popup__view-title');
         this._cardsElement = this._getTemplate();
         this._cardImg = this._cardsElement.querySelector('.card__image');
         this._buttonLike = this._cardsElement.querySelector('.card__like-button');

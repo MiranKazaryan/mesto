@@ -1,10 +1,10 @@
 import '../pages/index.css';
-import { Card } from "../scripts/Card.js";
-import { formValidator } from "../scripts/FormValidator.js";
-import { Section } from '../scripts/Section.js';
-import { PopupWithImage } from '../scripts/PopupWithImage.js';
-import { PopupWithForm } from '../scripts/PopupWithForm.js';
-import { UserInfo } from '../scripts/UserInfo.js';
+import { Card } from "../components/Card.js";
+import { formValidator } from "../components/FormValidator.js";
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 const ColumbImg = new URL('../images/columbia-university-new-york-city.jpg', import.meta.url);
 const FrescoImg = new URL('../images/frescos-national-university-mexico.jpg', import.meta.url);
 const HandleyImg = new URL('../images/handley-library-building-in-winchester.jpg', import.meta.url);
@@ -52,25 +52,25 @@ const configuration = {
 }
 const popupProfile = document.querySelector('.popup_profile');
 const popupAdd= document.querySelector('.popup_add');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const popupAddButton = document.querySelector('.profile__add-button');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputDescription = document.querySelector('.popup__input_type_description');
 const formAdd = document.getElementById('form-add');
 
 //создаем объекты классов для валидации форм
-const editProfileValidator = new formValidator(configuration, popupProfile);
-const addCardValidator = new formValidator(configuration, popupAdd);
+const validatorEditProfile = new formValidator(configuration, popupProfile);
+const validatorAddCard = new formValidator(configuration, popupAdd);
 
-editProfileValidator.enableValidation();
-addCardValidator.enableValidation();
+validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();
 //создаем объект класса для считывания информации из полей 
 const userInfo = new UserInfo('.profile__title','.profile__subtitle');
 
 //создаем класс формы для редактирования шапки сайта
 const popupProfileEdit = new PopupWithForm('.popup_profile',  
   {
-  FormSubmit: (data) => { 
+  formSubmit: (data) => { 
     userInfo.setUserInfo({ name: data['name'], job: data['about'] });
     popupProfileEdit.close();
   }}
@@ -79,7 +79,7 @@ const popupProfileEdit = new PopupWithForm('.popup_profile',
 popupProfileEdit.setEventListeners();
 
 //Редактирование профиля
-editButton.addEventListener('click', function() {
+profileEditButton.addEventListener('click', function() {
   const userData = userInfo.getUserInfo();
   inputName.value = userData.name; 
   inputDescription.value = userData.job;
@@ -112,7 +112,7 @@ initCards.renderItems();
 //создаем класс формы для добавления карточки
 const popupAddCard = new PopupWithForm('.popup_add',  
   {
-  FormSubmit: (data) => {
+  formSubmit: (data) => {
     const newCard = renderCards({ name: data['place'], link: data['link'] });    
     initCards.addItem(newCard);
     popupAddCard.close();
@@ -122,7 +122,7 @@ const popupAddCard = new PopupWithForm('.popup_add',
 //
 popupAddCard.setEventListeners();
 //открытие формы добавления карточки
-addButton.addEventListener('click', function() {
+popupAddButton.addEventListener('click', function() {
   formAdd.reset();
   addCardValidator.clearError();
   addCardValidator.toggleButtonState();

@@ -1,9 +1,9 @@
 import { Popup } from "./Popup.js";
 export class PopupWithForm extends Popup{
-    constructor(popupSelector, {FormSubmit}){
-        super(popupSelector);
-        this._popupForm = this._popupSelector.querySelector('.popup__form');
-        this._FormSubmit = FormSubmit;
+    constructor(popup, {formSubmit}){
+        super(popup);
+        this._popupForm = this._popup.querySelector('.popup__form');
+        this._formSubmit = formSubmit;
         this._inputList = this._popupForm.querySelectorAll('.popup__input');
     }
     //собираем значения инпутов 
@@ -19,7 +19,7 @@ export class PopupWithForm extends Popup{
         super.setEventListeners();
         this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._FormSubmit(this._getInputValues());
+            this._formSubmit(this._getInputValues());
         });
     }
     //сбрасываем форму
