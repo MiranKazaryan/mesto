@@ -1,4 +1,6 @@
 .profile__avatar{
+    background-image: url(../../../images/photo_custo.jpg);
+    background-size: cover;
     height: 120px;
     width: 120px;
     border-radius: 50%;
@@ -8,4 +10,8 @@
     .profile__avatar{
         margin: 0 auto;
     }
+}
+.profile__avatar:hover{
+    opacity: 0.5;
+    transition-duration: 1s;
 }

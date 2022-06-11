@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -12,13 +11,15 @@
         <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип сайта">
     </header>
     <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/photo_custo.jpg')%>" alt="Аватар профиля">
+        <div class="profile__avatar">
+            <button type="button" class="profile__edit-avatar"></button>
+        </div>   
             <div class="profile__text-info"> 
                 <div class="profile__name">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <h1 class="profile__title"></h1>
                     <button type="button" class="profile__edit-button"></button> 
                 </div>
-                <p class="profile__subtitle">Исследователь океана</p>
+                <p class="profile__subtitle"></p>
             </div>
             <button type="button" class="profile__add-button"></button>
     </section>
@@ -62,16 +63,40 @@
           <p class="popup__view-title"></p>
         </div>
       </section>
+      <section class="popup popup_confirm">
+        <div class="popup__container">
+            <h2 class="popup__title"> Вы уверены? </h2>
+            <form class="popup__form" name="profile-editor" id="form-confirm" novalidate>
+                <button type="submit" class="popup__save-button"> Да </button>
+            </form>
+            <button type="button" class="popup__close-button" id="3"></button>
+        </div>
+      </section>
+      <section class="popup popup_avatar">
+        <div class="popup__container">
+            <h2 class="popup__title"> Обновить аватар? </h2>
+            <form class="popup__form" name="profile-editor" id="form-avatar" novalidate>
+                <input class="popup__input popup__input_type_img-link" maxlength="80" name="link" id="input-link" placeholder="Ссылка на картинку" type="url" required>
+                <span class="popup__input-error input-link-error"></span>
+                <button type="submit" class="popup__save-button"> Сохранить </button>
+            </form>
+            <button type="button" class="popup__close-button" id="3"></button>
+        </div>
+      </section>
+
     <template id="initial-card">
         <li class="card">
             <img class="card__image" src="#" alt="Изображение">
             <button class="card__delete-button"></button>
             <div class="card__info">
                 <h2 class="card__title"> </h2>
-                <button type="button" class="card__like-button" ></button>
+                <div class="card__like-area">
+                    <button type="button" class="card__like-button" ></button>
+                    <span class="card__like-count">0</span>
+                </div>
+                
             </div>
         </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
