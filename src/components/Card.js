@@ -47,8 +47,6 @@ export class Card{
         }
     }
     initiateCard(){
-        
-        const popupZoomImg = document.querySelector('.popup_view');
         const popupImg = document.querySelector('.popup__image');
         this._cardsElement = this._getTemplate();
         this._cardImg = this._cardsElement.querySelector('.card__image');
