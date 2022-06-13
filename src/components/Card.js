@@ -47,7 +47,6 @@ export class Card{
         }
     }
     initiateCard(){
-        const popupImg = document.querySelector('.popup__image');
         this._cardsElement = this._getTemplate();
         this._cardImg = this._cardsElement.querySelector('.card__image');
         this._buttonLike = this._cardsElement.querySelector('.card__like-button');
@@ -62,7 +61,6 @@ export class Card{
         if(this._ownerId !== this._userId){
             this._buttonDelete.style.display = 'none';
         }
-       
         return this._cardsElement;
     }
 }

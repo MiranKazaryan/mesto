@@ -30,19 +30,7 @@ Promise.all([api.getProfile(), api.getInitialCards()])
     userInfo.setUserInfo({name: res.name, job: res.about, avatar: res.avatar});
     document.querySelector('.profile__avatar').style.backgroundImage = `url(${res.avatar})`;
     userId = res._id;
-    
-    cardList.forEach((data) => {
-      const newCard = renderCards({ 
-        name: data.name,
-        link: data.link, 
-        likes: data.likes,
-        id: data._id,
-        userId: userId,
-        ownerId: data.owner._id
-      });
-      initCards.addItemI(newCard);   
-    })
-
+    initCards.renderItems(cardList);
   })
   .catch((err) => {
     console.log(err);
@@ -158,8 +146,17 @@ function renderCards(element){
 const initCards = new Section(
     {
    items: [],
-    renderer: (item) => initCards.addItemI(item)
-    },'.cards');
+    renderer: (data) => {
+      const newCard = renderCards({ 
+        name: data.name,
+        link: data.link, 
+        likes: data.likes,
+        id: data._id,
+        userId: userId,
+        ownerId: data.owner._id
+      });
+      initCards.addItem(newCard, 'after');
+    }},'.cards');
 
 
 
@@ -178,8 +175,7 @@ const popupAddCard = new PopupWithForm('.popup_add',
         userId: userId,
         ownerId: res.owner._id
       });
-      initCards.addItem(newCard);
-     // location.reload();
+      initCards.addItem(newCard,'before');
       popupAddCard.close();
   })
     .catch ((err) => console.log(err))
